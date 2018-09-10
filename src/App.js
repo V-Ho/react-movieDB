@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Header from '../src/components/Header'
+import Main from './layouts/Main'
 
 const API_KEY = process.env.REACT_APP_movie_api_key
 
@@ -7,7 +9,8 @@ class App extends Component {
     console.log('API Key:', API_KEY)
     return (
       <div className='App'>
-        <h1>React Movie DB</h1>
+        <Header />
+        <Main />
       </div>
     )
   }
