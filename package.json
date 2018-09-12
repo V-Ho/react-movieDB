@@ -13,7 +13,20 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-    "standard": {
-      "env": "browser"
-    }
+  "standard": {
+    "env": "browser"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.7.1",
+    "styled-components": "^3.4.6"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ],
+    "plugins": [
+      "styled-components"
+    ]
+  }
 }

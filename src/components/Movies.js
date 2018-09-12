@@ -1,7 +1,6 @@
 import React from 'react'
 import MovieListItem from './MovieListItem'
 
-// const titles = ['Beauty & the Beast', 'Nemo', 'Wall-E']
 const API_KEY = process.env.REACT_APP_movie_api_key
 
 class Movies extends React.Component {
@@ -35,7 +34,7 @@ class Movies extends React.Component {
 
   render () {
     return (
-      <ul className='movies'>
+      <ul>
         {
           this.state.movies.map((movie) => // map over this.state.movies array, pass in movie object
             <MovieListItem key={movie.id} movie={movie} />
