@@ -11,11 +11,22 @@ const NavSection = styled.section`
 `
 
 class Navigation extends React.Component {
+
+  state = {
+    genre: ''
+  }
+
+  onGenreChange = (e) => {
+    this.setState({ genre: e.EventTarget.value})
+  }
   render () {
     return (
       <div>
         <NavSection>
-          Navigation
+          <Selection
+            genre={this.state.genre}
+            onGenreChange={this.onGenreChange}
+          />
         </NavSection>
         <Selection />
       </div>

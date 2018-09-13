@@ -10,25 +10,12 @@ import styled from 'styled-components'
 //   margin-bottom: 10px;
 //   color: #555;
 // `
-class Selection extends React.Component {
-  state = {
-    value: null
-  }
-
-  onChange = e => {
-    this.setState({ value: e.target.value })
-  }
-
-  render() {
-    return (
-      <select value={this.setState.value} onChange={this.onChange}>
-        <option value="comedy">Comedy</option>
-        <option value="drama">Drama</option>
-        <option value="action">Action</option>
-      </select>
-
-    )
-  }
-}
+const Selection = ({ genre, onGenreChange }) => (
+  <select value={genre} onChange={onGenreChange}>
+    <option value='comedy'>Comedy</option>
+    <option value='drama'>Drama</option>
+    <option value='action'>Action</option>
+  </select>
+)
 
 export default Selection
