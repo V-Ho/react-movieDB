@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const MovieSection = styled.ul`
-  display: flex;
-  padding: 20px;
-`
+// const MovieSection = styled.ul`
+//   width: 240px;
+//   height: 100px;
+//   margin: 5px;
+//   background: tomato;
+// `
 
 const MovieItem = styled.li`
   flex-basis: 22%;
@@ -69,24 +71,22 @@ const MovieListItem = ({ movie }) => {
   const getYear = release_date.substring(0, 4)
 
   return (
-    <MovieSection>
-      <MovieItem>
-        <Img src={imgUrl} alt={title} />
-        <MovieDescription>
-          <MovieTitle>{title}</MovieTitle>
-          <MovieDetails>
-            <MovieYear>
-              <MovieHeader>Year</MovieHeader>
-              <MovieYearDate>{getYear}</MovieYearDate>
-            </MovieYear>
-            <MovieRating>
-              <MovieHeader>Rating</MovieHeader>
-              <MovieYearDate>{vote_average}</MovieYearDate>
-            </MovieRating>
-          </MovieDetails>
-        </MovieDescription>
-      </MovieItem>
-    </MovieSection>
+    <MovieItem>
+      <Img src={imgUrl} alt={title} />
+      <MovieDescription>
+        <MovieTitle>{title}</MovieTitle>
+        <MovieDetails>
+          <MovieYear>
+            <MovieHeader>Year</MovieHeader>
+            <MovieYearDate>{getYear}</MovieYearDate>
+          </MovieYear>
+          <MovieRating>
+            <MovieHeader>Rating</MovieHeader>
+            <MovieYearDate>{vote_average}</MovieYearDate>
+          </MovieRating>
+        </MovieDetails>
+      </MovieDescription>
+    </MovieItem>
   )
 }
 

@@ -1,7 +1,17 @@
 import React from 'react'
 import MovieListItem from './MovieListItem'
+import styled from 'styled-components'
 
 const API_KEY = process.env.REACT_APP_movie_api_key
+
+const MovieSection = styled.ul`
+  flex-basis: 80%;
+  padding: 20px 0;
+  margin: 0;
+  background-color: papayawhip;
+  display: flex;
+  flex-wrap: wrap;
+`
 
 class Movies extends React.Component {
   constructor (props) {
@@ -34,13 +44,13 @@ class Movies extends React.Component {
 
   render () {
     return (
-      <ul>
+      <MovieSection>
         {
           this.state.movies.map((movie) => // map over this.state.movies array, pass in movie object
             <MovieListItem key={movie.id} movie={movie} />
           )
         }
-      </ul>
+      </MovieSection>
     )
   }
 }
