@@ -11,11 +11,14 @@ import styled from 'styled-components'
 //   color: #555;
 // `
 const Selection = ({ genre, onGenreChange }) => (
-  <select value={genre} onChange={onGenreChange}>
-    <option value='comedy'>Comedy</option>
-    <option value='drama'>Drama</option>
-    <option value='action'>Action</option>
-  </select>
+  <div>
+    <label>Genre 1</label>
+    <select value={genre} onChange={onGenreChange}>
+      <option value='comedy'>Comedy</option>
+      <option value='drama'>Drama</option>
+      <option value='action'>Action</option>
+    </select>
+  </div>
 )
 
 export default Selection

@@ -28,7 +28,6 @@ class Navigation extends React.Component {
             onGenreChange={this.onGenreChange}
           />
         </NavSection>
-        <Selection />
       </div>
     )
   }
