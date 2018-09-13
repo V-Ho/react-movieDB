@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Selection from './Selection'
 
 const NavSection = styled.section`
   flex-basis: 20%;
@@ -12,9 +13,12 @@ const NavSection = styled.section`
 class Navigation extends React.Component {
   render () {
     return (
-      <NavSection>
-        Navigation
-      </NavSection>
+      <div>
+        <NavSection>
+          Navigation
+        </NavSection>
+        <Selection />
+      </div>
     )
   }
 }
