@@ -8,7 +8,7 @@ const MovieSection = styled.ul`
   flex-basis: 80%;
   padding: 20px 0;
   margin: 0;
-  background-color: papayawhip;
+  background-color: #D1F2EB;
   display: flex;
   flex-wrap: wrap;
 `

@@ -1,15 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-// const MovieSection = styled.ul`
-//   width: 240px;
-//   height: 100px;
-//   margin: 5px;
-//   background: tomato;
-// `
-
 const MovieItem = styled.li`
-  flex-basis: 22%;
+  flex-basis: 22%; /* display max 4 movies per line */
   box-sizing: border-box;
   margin: 1.5%;
   display: flex;
@@ -23,9 +16,10 @@ const MovieItem = styled.li`
 const MovieDescription = styled.div`
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex-grow: 1; /* stretch movie description to fill vertical space */
   justify-content: space-between;
   padding: 10px;
+  background-color: #F8F9F9;
 `
 
 const MovieTitle = styled.h2`
@@ -35,7 +29,7 @@ const MovieTitle = styled.h2`
 `
 
 const Img = styled.img`
-  width: 100%;
+  width: 100%; /* size image to fit MovieItem */
 `
 
 const MovieDetails = styled.div`

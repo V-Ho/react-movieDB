@@ -6,7 +6,7 @@ const NavSection = styled.section`
   /* height: 200px; */
   min-width: 300px;
   padding: 20px;
-  background-color: tomato;
+  background-color: #F2D1D8;
 `
 
 class Navigation extends React.Component {
