@@ -6,7 +6,7 @@ const API_KEY = process.env.REACT_APP_movie_api_key
 
 const MovieSection = styled.ul`
   flex-basis: 80%;
-  padding: 20px 0;
+  padding: 40px;
   margin: 0;
   background-color: #D1F2EB;
   display: flex;
