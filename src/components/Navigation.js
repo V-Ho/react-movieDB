@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import Selection from './Selection'
 import Slider from './Slider'
 
-const API_KEY = process.env.REACT_APP_movie_api_key
-
 const NavSection = styled.section`
   flex-basis: 20%;
   /* height: 200px; */
@@ -19,75 +17,27 @@ const StyledSlider = styled.section`
 `
 
 class Navigation extends React.Component {
-
-  state = {
-    genre: 'Comedy',
-    genres: [], // initialise state with empty array
-    year: {
-      label: 'year',
-      min: 1990,
-      max: 2018,
-      step: 1,
-      value: { min: 2000, max: 2018}
-    },
-    rating: {
-      label: 'rating',
-      min: 0,
-      max: 10,
-      step: 1,
-      value: { min: 8, max: 10}
-    },
-    runtime: {
-      label: 'runtime',
-      min: 0,
-      max: 300,
-      step: 15,
-      value: { min: 60, max: 120 }
-    }
-  }
-
-  componentDidMount() {
-    const genresURL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
-
-    fetch(genresURL)
+  componentDidMount () {
+    fetch(this.props.url)
       .then(res => res.json())
-      .then(data => this.setState({genres: data.genres})) // store genres in state, pass to Selection component
+      .then(data => this.props.setGenres(data.genres)) // when api data recieved, call setGenres & pass in data.genres as arg
       .catch(err => console.log(err))
   }
 
-  onGenreChange = (e) => {
-    this.setState({ genre: e.EventTarget.value})
-  }
-
-  // onChange called by Slider's onChange method, recievs ob with type & data properties
-  onChange = data => {
-    this.setState({
-      [data.type]: {
-        ...this.state[data.type], // indicates which part of state should be updated
-        value: data.value         // overwrite val of property
-      }
-    })
-  }
-
-  // onProductionYearChange = (e) => {
-  //   this.setState({
-  //     productionYear: {}
-  //   })
-  // }
-
   render () {
+    const { genre, genres, onGenreChange, onChange, year, rating, runtime } = this.props // Navigation recieves both methods and properties via props
     return (
       <div>
         <NavSection>
           <Selection
-            genres={this.state.genres}
-            genre={this.state.genre}
-            onGenreChange={this.onGenreChange}
+            genres={genres}
+            genre={genre}
+            onGenreChange={onGenreChange}
           />
           <StyledSlider>
-            <Slider data={this.state.year} onChange={this.onChange} />
-            <Slider data={this.state.rating} onChange={this.onChange} />
-            <Slider data={this.state.runtime} onChange={this.onChange} />
+            <Slider data={year} onChange={onChange} />
+            <Slider data={rating} onChange={onChange} />
+            <Slider data={runtime} onChange={onChange} />
           </StyledSlider>
         </NavSection>
       </div>
