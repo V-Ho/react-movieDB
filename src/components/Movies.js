@@ -2,8 +2,6 @@ import React from 'react'
 import MovieListItem from './MovieListItem'
 import styled from 'styled-components'
 
-const API_KEY = process.env.REACT_APP_movie_api_key
-
 const MovieSection = styled.ul`
   flex-basis: 80%;
   padding: 40px;
@@ -21,10 +19,19 @@ class Movies extends React.Component {
     }
     this.storeMovies = this.storeMovies.bind(this)
   }
+  // when rendering for first time, call fetchMovies & pass in url from props
   componentDidMount () {
-    const apiURL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
+    this.fetchMovies(this.props.url)
+  }
+  // when we choose different selection, access nextProps
+  componentWillReceiveProps (nextProps) {
+    if (this.props.url !== nextProps.url) {
+      this.fetchMovies(nextProps.url)
+    }
+  }
 
-    fetch(apiURL)
+  fetchMovies = (url) => {
+    fetch(url)
       .then(res => res.json())
       // .then(data => console.log(data))
       .then(data => this.storeMovies(data))
@@ -32,7 +39,7 @@ class Movies extends React.Component {
   }
 
   // assign results of fetch movies, then map and store data in state
-  storeMovies (data) {
+  storeMovies = (data) => {
     const movies = data.results.map(res => {
       const { vote_count, id, genre_ids, poster_path, title, vote_average, release_date } = res
 
