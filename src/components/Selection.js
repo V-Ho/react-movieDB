@@ -10,10 +10,13 @@ import styled from 'styled-components'
 //   margin-bottom: 10px;
 //   color: #555;
 // `
-const Selection = ({ genre, onGenreChange }) => (
+const Selection = ({ genres, genre, onGenreChange }) => (
   <div>
-    <label>Genre 1</label>
+    <label>Genre</label>
     <select value={genre} onChange={onGenreChange}>
+      {genres.map(genre => (
+        <option key={genre.id} value={genre.name}>{genre.name}</option>
+      ))}
       <option value='comedy'>Comedy</option>
       <option value='drama'>Drama</option>
       <option value='action'>Action</option>

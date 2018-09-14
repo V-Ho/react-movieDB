@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import Selection from './Selection'
 import Slider from './Slider'
 
+const API_KEY = process.env.REACT_APP_movie_api_key
+
 const NavSection = styled.section`
   flex-basis: 20%;
   /* height: 200px; */
@@ -14,7 +16,8 @@ const NavSection = styled.section`
 class Navigation extends React.Component {
 
   state = {
-    genre: '',
+    genre: 'Comedy',
+    genres: [], // initialise state with empty array
     year: {
       label: 'year',
       min: 1990,
@@ -36,6 +39,15 @@ class Navigation extends React.Component {
       step: 15,
       value: { min: 60, max: 120 }
     }
+  }
+
+  componentDidMount() {
+    const genresURL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
+
+    fetch(genresURL)
+      .then(res => res.json())
+      .then(data => this.setState({genres: data.genres})) // store genres in state, pass to Selection component
+      .catch(err => console.log(err))
   }
 
   onGenreChange = (e) => {
@@ -63,6 +75,7 @@ class Navigation extends React.Component {
       <div>
         <NavSection>
           <Selection
+            genres={this.state.genres}
             genre={this.state.genre}
             onGenreChange={this.onGenreChange}
           />
