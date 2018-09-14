@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Selection from './Selection'
 import Slider from './Slider'
+import SearchButton from './SearchButton'
 
 const NavSection = styled.section`
   flex-basis: 20%;
@@ -39,6 +40,7 @@ class Navigation extends React.Component {
             <Slider data={rating} onChange={onChange} />
             <Slider data={runtime} onChange={onChange} />
           </StyledSlider>
+          <SearchButton onClick={this.props.onSearchBtnClick} />
         </NavSection>
       </div>
     )
