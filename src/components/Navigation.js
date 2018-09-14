@@ -10,7 +10,12 @@ const NavSection = styled.section`
   /* height: 200px; */
   min-width: 300px;
   padding: 40px;
+  background-color: #EBD1F2;
+`
+
+const StyledSlider = styled.section`
   background-color: white;
+  padding: 20px;
 `
 
 class Navigation extends React.Component {
@@ -79,9 +84,11 @@ class Navigation extends React.Component {
             genre={this.state.genre}
             onGenreChange={this.onGenreChange}
           />
-          <Slider data={this.state.year} onChange={this.onChange} />
-          <Slider data={this.state.rating} onChange={this.onChange} />
-          <Slider data={this.state.runtime} onChange={this.onChange} />
+          <StyledSlider>
+            <Slider data={this.state.year} onChange={this.onChange} />
+            <Slider data={this.state.rating} onChange={this.onChange} />
+            <Slider data={this.state.runtime} onChange={this.onChange} />
+          </StyledSlider>
         </NavSection>
       </div>
     )

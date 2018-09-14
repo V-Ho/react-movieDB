@@ -12,6 +12,7 @@ const StyledLabel = styled(StyledSlider)`
   font-size: 1rem;
   margin-bottom: 20px;
   display: block;
+  text-transform: capitalize;
 `
 
 class Slider extends React.Component {
